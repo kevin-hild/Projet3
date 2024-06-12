@@ -206,12 +206,12 @@ footer nav ul {
 	padding: 0 20px;
 }
 
-.bouton_filtre:hover {
+/* .bouton_filtre:hover {
 	background-color: #1D6154;; 
 	color: white;
-}
+} */
 
 .filtre_actif {
-	background-color: #1D6154;; 
-	color: white;
+    background-color: #1D6154; 
+    color: white;
 }
