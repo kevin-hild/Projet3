@@ -78,61 +78,17 @@ async function getWorks() {
 
 getWorks();
 
+let authentification = window.localStorage.getItem('token');
 
+if (authentification != null){
+    console.log("token present in local storage");
 
-    //    test
+    document.getElementById("login").innerHTML = '<a href=index.html>logout</a>';
+    const boutonLogOut = document.getElementById("login");
+    boutonLogOut.addEventListener("click", function(){
+        event.preventDefault();
+        window.localStorage.removeItem("token");
+        window.location.replace("index.html");
+    });
 
-    // const boutonFiltreTous = document.querySelector(".bouton_0")
-
-    // boutonFiltreTous.addEventListener("click", function() {
-    //    document.querySelector(".gallery").innerHTML = "";
-    //    getWorks()
-    //    const clearFiltres = document.querySelectorAll(".bouton_filtre")
-    //    clearFiltres.forEach(filtre => {
-    //         filtre.classList.remove("work")
-    //    })
-    //    boutonFiltreTous.classList.add("work")
-       
-    // });
-
-
-    // const boutonFiltreObjets = document.querySelector(".bouton_1")
-
-    // boutonFiltreObjets.addEventListener("click", function() {
-    //     const travauxFiltre = travaux.filtre(function(work) {
-    //         return work.categoryId == 1;
-    //     });
-    //     document.querySelector(".gallery").innerHTML = "";
-    //     getWorks(travauxFiltre);
-    //     const clearFiltres = document.querySelectorAll(".bouton_filtre")
-    //     clearFiltres.forEach(filtre => {
-    //         filtre.classList.remove("bouton_filtre")
-    //     })
-    //     boutonFiltreObjets.classList.add("bouton_filtre")
-    
-    // });
- 
-       
-     
-    // const boutonFiltreObjets = document.querySelector(".bouton_1")
-
-    // boutonFiltreObjets.addEventListener("click", function() {
-    //     const objetFiltre = objet.filtre(function (works) {
-    //         return works.categoryId == 1
-    //     });
-    // })
-
-
-    
-   // btnElement.addEventListener("click", () => {
-    // btnElement.style.backgroundColor = "#1D6154"
-    // btnElement.style.color = "white"
-    // });  
-
-
-
-
-
-
-
-
+}

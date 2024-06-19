@@ -138,34 +138,34 @@ li:hover {
 	width: 100%;
 
 }
-#contact  {
+#formulaire  {
 	width: 50%;
 margin: auto;
 }
-#contact > * {
+#formulaire > * {
 	text-align: center;
 
 }
-#contact h2{
+#formulaire h2{
 	margin-bottom: 20px;
 }
-#contact form {
+#formulaire form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+#formulaire input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+#formulaire label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea {
+#formulaire textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -216,6 +216,9 @@ li{
 	cursor: pointer;
 }
 
+.connection {
+	cursor: pointer;
+}
 
 a {
 	text-decoration: none;
@@ -225,6 +228,31 @@ a:visited {
 	color: black;
 }
 
+.mdp-forget {
+	font-size: 500;
+	text-decoration: underline;
+	text-align: center;
+	color: #3D3D3D;
+	cursor: pointer;
+}
 
+.connexion {
+	cursor: pointer;
+}
 
+.cadre {
+	display: flex; 
+	justify-content: center;
+	margin-top: 30px;
+	align-items: center;
+}
 
+#error-message {
+	display: flex;
+	justify-content: center;
+	background-color: red;
+	color: white;
+	padding: 10px;
+	width: 60%;
+	opacity: 0;
+}
