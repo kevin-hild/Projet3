@@ -10,9 +10,11 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="travaux.js" defer></script>
+	<script src="https://kit.fontawesome.com/5342c31249.js" crossorigin="anonymous"></script>
 	
 </head>
 <body>
+	<div id="edition_mode" class="edition_mode"><i class="fa-regular fa-pen-to-square"></i>Mode édition</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -37,10 +39,8 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<div class="categories">
-			<!-- <button class="bouton_filtre bouton_0 filtre_actif">Tous</button> -->
-		</div>
+		<div class="projet"><h2>Mes Projets</h2> <i class="fa-regular fa-pen-to-square"></i><button class="btn-modif">modifier</button></div>
+		<div class="categories"></div>
 		<div class="gallery"></div>
 	</section>
 	<section id="contact">
@@ -65,5 +65,14 @@
 		</ul>
 	</nav>
 </footer>
+<!-- Modal -->
+<div id="myModal" class="modal">
+	<div class="modal-content">
+	  <span class="close"><i class="fa-solid fa-xmark"></i></span>
+	  <h1 class="galerie-photo">Galerie photo</h1>
+	  <div class="modal-gallery"></div>
+	  <button id="addImageButton">Ajouter une photo</button>
+	</div>
+  </div>
 </body>
 </html>

@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	padding-top: 59px;
 }
 header {
 	display: flex;
@@ -124,7 +125,6 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 .gallery {
 	width: 100%;
@@ -216,7 +216,6 @@ li{
 	cursor: pointer;
 }
 
-
 a {
 	text-decoration: none;
 }
@@ -225,6 +224,121 @@ a:visited {
 	color: black;
 }
 
+.projet{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	margin-bottom: 30px;
+}
+
+.btn-modif {
+	display: flex;
+	align-content: center;
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	
+}
+
+.fa-regular {
+	margin: 0 10px 0 20px;
+	font-size: 15px;
+}
+
+.edition_mode {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    position: absolute;
+	top: 0;
+    left: 0;
+	width: 100%;
+	height: 59px;
+	background-color: black;
+	color: white;
+	box-sizing: border-box;
+}
 
 
+/* Modal (boîte de dialogue) */
+.modal {
+    display: none; /* Masqué par défaut */
+    position: fixed; /* Reste à l'écran même en scrollant */
+    z-index: 1; /* Au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; /* Activer le défilement si nécessaire */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* Couleur de fond avec opacité */
+}
 
+/* Contenu de la modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 630px;
+	height: 688px;
+	border-radius: 10px;
+	/* position: sticky; */
+}
+
+/* Bouton de fermeture */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.galerie-photo {
+	color: #000;
+	text-align: center;
+	font-family: "Work Sans";
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+#addImageButton {
+    display: block;
+	width: 237px;
+	height: 36px;
+	flex-shrink: 0;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #1D6154;
+    color: white;
+    border: none;
+	border-radius: 60px;
+    cursor: pointer;
+}
+
+.modal-gallery {
+    
+	display: grid;
+    grid-template-columns: repeat(5, 0.1fr);
+	justify-content: center;
+    gap: 10px;
+	margin-top: 50px;
+	margin-bottom: 200px;
+}
+.thumbnail {
+    width: 78.123px;
+    height: 104.08px;
+    flex-shrink: 0;
+	margin: auto;
+}

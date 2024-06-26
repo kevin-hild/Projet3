@@ -3,7 +3,6 @@ async function getWorks() {
     const works = await response.json();
     console.log(works);
 
-    // Fonction pour afficher les travaux
     function displayWorks(filteredWorks) {
         const sectionImage = document.querySelector(".gallery");
         sectionImage.innerHTML = ''; // Vider la galerie
@@ -24,10 +23,8 @@ async function getWorks() {
         });
     }
 
-    // Afficher tous les travaux par défaut
     displayWorks(works);
 
-    // Ajouter un gestionnaire d'événement pour chaque bouton de catégorie
     async function getCategories() {
         const response = await fetch("http://localhost:5678/api/categories");
         const categories = await response.json();
@@ -35,19 +32,16 @@ async function getWorks() {
 
         const sectionElement = document.querySelector(".categories");
 
-        // Ajouter le bouton "Tous"
         const allButton = document.createElement("button");
         allButton.classList.add("bouton_filtre", "filtre_actif");
         allButton.innerText = "Tous";
         sectionElement.appendChild(allButton);
 
-        // Ajouter un événement de clic pour le bouton "Tous"
         allButton.addEventListener('click', function() {
             handleButtonClick(this);
-            displayWorks(works); // Afficher tous les travaux
+            displayWorks(works);
         });
 
-        // Fonction pour gérer les clics sur les boutons
         function handleButtonClick(button) {
             const buttons = document.querySelectorAll('.bouton_filtre');
             buttons.forEach(bouton_filtre => {
@@ -56,7 +50,6 @@ async function getWorks() {
             button.classList.add('filtre_actif');
         }
 
-        // Ajouter les autres boutons de catégories
         categories.forEach(categorie => {
             const btnElement = document.createElement("button");
             btnElement.classList.add("bouton_filtre");
@@ -64,9 +57,8 @@ async function getWorks() {
 
             btnElement.addEventListener('click', function() {
                 handleButtonClick(this);
-                // Filtrer les travaux pour inclure uniquement ceux de la catégorie spécifiée
                 const filteredWorks = works.filter(work => work.categoryId === categorie.id);
-                displayWorks(filteredWorks); // Afficher les travaux filtrés
+                displayWorks(filteredWorks);
             });
 
             sectionElement.appendChild(btnElement);
@@ -74,21 +66,66 @@ async function getWorks() {
     }
 
     getCategories();
+
+    function displayThumbnails(works) {
+        const modalGallery = document.querySelector(".modal-gallery");
+        modalGallery.innerHTML = ''; // Vider la galerie modale
+
+        works.forEach(work => {
+            const thumbnailElement = document.createElement("img");
+            thumbnailElement.src = work.imageUrl;
+            thumbnailElement.alt = work.title;
+            thumbnailElement.classList.add("thumbnail");
+
+            modalGallery.appendChild(thumbnailElement);
+        });
+    }
+
+    displayThumbnails(works);
 }
 
 getWorks();
 
-let authentification = window.localStorage.getItem('token');
+document.addEventListener("DOMContentLoaded", function() {
+    const editionModeElement = document.getElementById('edition_mode');
+    const loginElement = document.getElementById("login");
+    const token = window.localStorage.getItem("token");
 
-if (authentification != null){
-    console.log("token present in local storage");
+    if (token) {
+        console.log("Token présent dans le stockage local");
 
-    document.getElementById("login").innerHTML = '<a href=index.html>logout</a>';
-    const boutonLogOut = document.getElementById("login");
-    boutonLogOut.addEventListener("click", function(){
-        event.preventDefault();
-        window.localStorage.removeItem("token");
-        window.location.replace("index.html");
-    });
+        loginElement.innerHTML = '<a href="index.html" id="logout-link">logout</a>';
+        const logoutLink = document.getElementById("logout-link");
 
-}
+        logoutLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            window.localStorage.removeItem("token");
+            window.location.replace("index.html");
+        });
+
+        editionModeElement.style.display = 'flex';
+    } else {
+        editionModeElement.style.display = 'none';
+        document.body.style.paddingTop = '0';
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("myModal");
+    const btn = document.querySelector(".btn-modif");
+    const span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
