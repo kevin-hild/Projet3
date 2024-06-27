@@ -39,7 +39,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<div class="projet"><h2>Mes Projets</h2> <i class="fa-regular fa-pen-to-square"></i><button class="btn-modif">modifier</button></div>
+		<div class="projet">
+			<h2>Mes Projets</h2>
+			<i class="fa-regular fa-pen-to-square modif-icon"></i>
+			<button class="btn-modif">modifier</button></div>
 		<div class="categories"></div>
 		<div class="gallery"></div>
 	</section>
@@ -68,11 +71,20 @@
 <!-- Modal -->
 <div id="myModal" class="modal">
 	<div class="modal-content">
-	  <span class="close"><i class="fa-solid fa-xmark"></i></span>
-	  <h1 class="galerie-photo">Galerie photo</h1>
-	  <div class="modal-gallery"></div>
-	  <button id="addImageButton">Ajouter une photo</button>
+		<div class="arrow-xmark">
+			<span class="back-to-main-modal"><i class="fa-solid fa-arrow-left"></i></span>
+			<span class="close"><i class="fa-solid fa-xmark"></i></span>
+		</div>
+		<h1 class="galerie-photo">Galerie photo</h1>
+		<from id="addPhotoForm">
+			<div class="cadre-suppression"> 
+	  			<div class="modal-gallery"></div>
+			</div>
+	  		<p class="bord1"></p>
+	  		<button class="addImageButton">Ajouter une photo</button>
+		</from>  
 	</div>
-  </div>
+	
+</div>
 </body>
 </html>

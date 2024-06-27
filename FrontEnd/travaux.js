@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const editionModeElement = document.getElementById('edition_mode');
     const loginElement = document.getElementById("login");
     const token = window.localStorage.getItem("token");
+    const modifyButtons = document.querySelectorAll(".btn-modif");
+    const modifyIcons = document.querySelectorAll(".modif-icon");
+    const mainModal = document.getElementById("myModal");
 
     if (token) {
         console.log("Token présent dans le stockage local");
@@ -104,10 +107,39 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         editionModeElement.style.display = 'flex';
+        modifyButtons.forEach(button => button.style.display = 'block');
+        modifyIcons.forEach(icon => icon.style.display = 'inline');
     } else {
         editionModeElement.style.display = 'none';
         document.body.style.paddingTop = '0';
+        modifyButtons.forEach(button => button.style.display = 'none');
+        modifyIcons.forEach(icon => icon.style.display = 'none');
     }
+
+    modifyButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            if (token) {
+                mainModal.style.display = "block";
+            } else {
+                alert("Vous devez être connecté pour modifier.");
+            }
+        });
+    });
+
+    modifyIcons.forEach(icon => {
+        icon.addEventListener("click", function() {
+            if (token) {
+                mainModal.style.display = "block";
+            } else {
+                alert("Vous devez être connecté pour modifier.");
+            }
+        });
+    });
+
+    closeMainModal.onclick = function() {
+        mainModal.style.display = "none";
+    }
+
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -129,3 +161,63 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+const boutonAjoutPhoto = document.querySelector(".addImageButton")
+let click = 0
+boutonAjoutPhoto.addEventListener("click", function modal2(event){
+    event.preventDefault();
+    click++;
+    const sectionSuppression = document.querySelector(".cadre-suppression");
+        sectionSuppression.innerHTML="";
+
+        boutonAjoutPhoto.innerHTML = "Valider";
+        boutonAjoutPhoto.classList.add("bouton-ajout-photo-gris");
+        boutonAjoutPhoto.classList.remove("addImageButton");
+        const titreModale = document.querySelector(".galerie-photo");
+        titreModale.innerHTML = "Ajout photo";
+        const arrowBack = document.querySelector(".back-to-main-modal");
+        arrowBack.style.display = "block";
+
+        const contenuModale = document.querySelector(".cadre-suppression");
+        const cadreAjoutPhoto = document.createElement("div");
+        cadreAjoutPhoto.classList.add("cadre-ajout-photo");
+        contenuModale.appendChild(cadreAjoutPhoto);
+        const imageAjoutPhoto = document.createElement("i");
+        imageAjoutPhoto.classList.add("fa-regular", "fa-image");
+        cadreAjoutPhoto.appendChild(imageAjoutPhoto);
+        const browseAjoutPhoto = document.createElement("button");
+        browseAjoutPhoto.textContent = "+ Ajouter photo";
+        cadreAjoutPhoto.appendChild(browseAjoutPhoto);
+        browseAjoutPhoto.addEventListener("click", function() {
+            photoInput.click();
+        })
+
+        const photoInput = document.createElement("input");
+        photoInput.type = "file";
+        photoInput.accept = "image/jpeg,image/png";
+        photoInput.id = "image-uploadee"
+        photoInput.style.display = "none";
+        cadreAjoutPhoto.appendChild(browseAjoutPhoto);
+        cadreAjoutPhoto.appendChild(photoInput);
+
+        const texteAjoutPhoto = document.createElement("p");
+        texteAjoutPhoto.innerText = "jpg, png: 4mo max";
+        cadreAjoutPhoto.appendChild(texteAjoutPhoto);
+
+        const titreAjoutPhoto = document.createElement("h3");
+        titreAjoutPhoto.textContent = "Titre"
+        contenuModale.appendChild(titreAjoutPhoto)
+        const champTitreAjoutPhoto = document.createElement("input")
+        champTitreAjoutPhoto.type = "name"
+        contenuModale.appendChild(champTitreAjoutPhoto)
+
+        const categorieAjoutPhoto = document.createElement("h3");
+        categorieAjoutPhoto.textContent = "Catégorie";
+        contenuModale.appendChild(categorieAjoutPhoto);
+        const listeCategories = document.createElement("select");
+        contenuModale.appendChild(listeCategories)
+        
+    })
+
+    
+

@@ -280,7 +280,7 @@ a:visited {
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; 
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #888;
     width: 630px;
 	height: 688px;
@@ -292,8 +292,11 @@ a:visited {
 .close {
     color: black;
     float: right;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
+	position: absolute;
+	top: 30px;
+	right: 30px;
 }
 
 .close:hover,
@@ -311,14 +314,15 @@ a:visited {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	margin-top: 60px;
 }
 
-#addImageButton {
+.addImageButton {
     display: block;
 	width: 237px;
 	height: 36px;
 	flex-shrink: 0;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 10px 20px;
     background-color: #1D6154;
     color: white;
@@ -328,17 +332,172 @@ a:visited {
 }
 
 .modal-gallery {
-    
 	display: grid;
     grid-template-columns: repeat(5, 0.1fr);
 	justify-content: center;
     gap: 10px;
-	margin-top: 50px;
-	margin-bottom: 200px;
+	margin-top: 60px;
+	margin-bottom: 35px;
 }
 .thumbnail {
     width: 78.123px;
     height: 104.08px;
-    flex-shrink: 0;
+	padding-bottom: 20px;
+}
+
+/* Style pour la modal-content */
+.modal-content {
+    position: relative;
+    width: 630px;
+	height: 670px;
+    margin: 15% auto;
+    border: 1px solid #888;
+    border-radius: 10px;
+    background-color: #fefefe;
+}
+
+.cadre-ajout {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 420px;
+	height: 169px;
+	flex-shrink: 0;
+	border-radius: 3px;
+	background: #E8F1F6;	
+}
+
+.bord1 {
+	border-top: solid 1px #B3B3B3;
+	margin: 50px auto 30px auto;
+	width: 420px;
+	
+} 
+
+.bouton-ajout-photo-gris {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Syne';
 	margin: auto;
+	font-weight: 700;
+	color: white;
+	padding: 0px 20px;
+	height: 36px;
+	min-width: 237px;
+	width: auto;
+	border-radius: 60px ;
+	border: none;
+	background-color: #a7a7a7;
+	cursor: pointer;
+}
+
+.modal-content h2 {
+	color: #000;
+	text-align: center;
+	font-family: "Work Sans";
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.back-to-main-modal {
+	display: none;
+	font-size: 24px;
+    color: black;
+    cursor: pointer;
+}
+
+.arrow-xmark {
+	display: flex;
+	justify-content: space-between;
+}
+
+.cadre-ajout-photo {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #E8F1F6 ;
+	color: #b9c5cc;
+	width: 425px;
+	height: 185px;
+	margin-left: auto;
+   	margin-right: auto;
+}
+
+.fa-image {
+	width: 76px;
+	height: 76px;
+	font-size: 76px;
+	flex-shrink: 0;
+	color: #B9C5CC;
+	margin: 20px 0 10px 0;
+	margin-bottom: 5px;
+}
+
+.cadre-ajout-photo button {
+	font-weight: 500;
+	font-size: 14;
+	color: #306685;
+	margin : 10px ;
+	padding: 0px 20px;
+	height: 36px;
+	min-width: 237px;
+	width: auto;
+	text-align: center;
+	border-radius: 60px ;
+	border: none;
+	background-color: #cbd6dc;
+	cursor: pointer;
+}
+
+.cadre-ajout-photo i {
+	font-size: 76px;
+}
+
+.cadre-ajout-photo p{
+	font-size: 10px;
+	color: #444444;
+}
+
+h3 {
+	display: flex;
+	color: #3D3D3D;
+	font-family: "Work Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin: 20px 0 10px 100px;
+	
+   	
+}
+
+#addPhotoForm input {
+	display: flex;
+	margin-left: auto;
+   	margin-right: auto;
+	align-items: center;
+	width: 420px;
+	height: 51px;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	border: none;
+	padding: 0;
+}
+
+select {
+	display: flex;
+	margin-left: auto;
+   	margin-right: auto;
+	align-items: center;
+	width: 420px;
+	height: 51px;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	border: none;
+	padding: 0;
 }
