@@ -44,7 +44,7 @@
 			<i class="fa-regular fa-pen-to-square modif-icon"></i>
 			<button class="btn-modif">modifier</button></div>
 		<div class="categories"></div>
-		<div class="gallery"></div>
+		<div class="galery"></div>
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
@@ -72,19 +72,25 @@
 <div id="myModal" class="modal">
 	<div class="modal-content">
 		<div class="arrow-xmark">
-			<span class="back-to-main-modal"><i class="fa-solid fa-arrow-left"></i></span>
-			<span class="close"><i class="fa-solid fa-xmark"></i></span>
+			<span id="back-to-main-modal" class="back-to-main-modal"><i class="fa-solid fa-arrow-left"></i></span>
+			<span id="close-modal" class="close"><i class="fa-solid fa-xmark"></i></span>
 		</div>
 		<h1 class="galerie-photo">Galerie photo</h1>
-		<from id="addPhotoForm">
+		<from action="" method="post" id="addPhotoForm">
 			<div class="cadre-suppression"> 
-	  			<div class="modal-gallery"></div>
+	  			<div class="modal-galery"></div>
+			</div>
+			<div class="form-champ">
+				<label for="name">Titre</label>
+				<input id="name" type="text" name="name" required>
+				<label for="select">Catégorie</label>
+				<input id="select" type="select" name="select" required>
+				<!-- <input type="submit" value="Valider" class="bouton-ajout-photo-gris"> -->
 			</div>
 	  		<p class="bord1"></p>
-	  		<button class="addImageButton">Ajouter une photo</button>
+	  		<button class="addImageButton" id="addImageButton">Ajouter une photo</button>
 		</from>  
 	</div>
-	
 </div>
 </body>
 </html>
