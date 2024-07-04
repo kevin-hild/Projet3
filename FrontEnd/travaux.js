@@ -1,17 +1,23 @@
+let categories = []
+let works = []
+
 async function fetchArrays(){
     const response = await fetch("http://localhost:5678/api/categories");
-    const categories = await response.json();
-    localStorage.setItem("cats", JSON.stringify(categories))
+    categories = await response.json();
+    
     const response2 = await fetch("http://localhost:5678/api/works");
-    const works = await response2.json();
-    localStorage.setItem("works", JSON.stringify(works))
+    works = await response2.json();
+    
 }
 
-fetchArrays();
-const worksStored = localStorage.getItem("works")
-const works = JSON.parse(worksStored)
-const catsStored = localStorage.getItem("cats")
-const categories = JSON.parse(catsStored)
+async function init() {
+    await fetchArrays();
+    getCategories();
+    displayWorks(works);
+    displayThumbnails(works)
+}
+
+init()
 
 function displayWorks(filteredWorks) {
     const sectionImage = document.querySelector(".galery");
@@ -32,8 +38,6 @@ function displayWorks(filteredWorks) {
         figureElement.appendChild(figcaptionElement);
     });
 }
-
-displayWorks(works);
 
 function getCategories() {
 
@@ -74,8 +78,6 @@ function getCategories() {
     });
 }
 
-getCategories();
-
 function displayThumbnails(works) {
     const modalGalery = document.querySelector(".modal-galery");
     modalGalery.innerHTML = ''; // Vider la galerie modale
@@ -89,8 +91,6 @@ function displayThumbnails(works) {
         modalGalery.appendChild(thumbnailElement);
     });
 }
-
-displayThumbnails(works);
 
 document.addEventListener("DOMContentLoaded", function() {
     const editionModeElement = document.getElementById('edition_mode');
@@ -165,10 +165,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event.target == modal) {
             modal.style.display = "none";
             // resetModalContent(); // Réinitialisation du contenu de la modal
-            
         }
     }
-    
 });
 
 document.addEventListener("DOMContentLoaded", function() {
