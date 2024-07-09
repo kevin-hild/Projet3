@@ -40,7 +40,6 @@ function displayWorks(filteredWorks) {
 }
 
 function getCategories() {
-
     console.log(categories);
 
     const sectionElement = document.querySelector(".categories");
@@ -76,6 +75,16 @@ function getCategories() {
 
         sectionElement.appendChild(btnElement);
     });
+
+    const selectElement = document.querySelector("#category-select");
+    if (selectElement) {
+        categories.forEach(categorie => {
+            const optionElement = document.createElement("option");
+            optionElement.value = categorie.id;
+            optionElement.innerText = categorie.name;
+            selectElement.appendChild(optionElement);
+        });
+    }
 }
 
 function displayThumbnails(works) {
@@ -177,9 +186,8 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
 
         // Supprimer le contenu de la section suppression
-        const sectionSuppression = document.querySelector(".cadre-suppression");    // .modal-galery
+        const sectionSuppression = document.querySelector(".cadre-suppression");
         sectionSuppression.innerHTML = "";
-        // sectionSuppression.style.display = 'none';
 
         // Mettre à jour le bouton pour valider l'ajout de photo
         boutonAjoutPhoto.innerHTML = "Valider";
@@ -238,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 reader.readAsDataURL(file);
             }
         });
-
+        
         // Afficher la div form-champ
         formChamp.style.display = 'block';
     });
@@ -266,7 +274,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Cacher la flèche de retour
         btnBack.style.display = "none";
-        // btnBack.classList.remove(".carde-ajout-photo");
 
         const contenuModale = document.querySelector(".cadre-suppression");
         const ajoutPhoto = document.createElement("div");
@@ -277,6 +284,58 @@ document.addEventListener("DOMContentLoaded", function() {
         modalImage.style.display = 'none';
         displayThumbnails(works);
     });
+
 });
 
 
+// le code a vérifier 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const boutonAjoutPhoto = document.querySelector("#addImageButton");
+    const addPhotoForm = document.getElementById("addPhotoForm");
+
+    boutonAjoutPhoto.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Vérifier si tous les champs sont remplis
+        const title = document.getElementById("title").value;
+        const category = document.getElementById("category-select").value;
+        const imageInput = document.getElementById("image-uploadee");
+        const imageFile = imageInput.files[0];
+
+        if (title && category && imageFile) {
+            // Créer un objet FormData pour envoyer les données du formulaire
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("category", category);
+            formData.append("image", imageFile);
+
+            // Envoyer les données au serveur
+            fetch("http://localhost:5678/api/works", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(newWork => {
+                // Ajouter le nouveau projet à la liste des travaux et afficher
+                works.push(newWork);
+                displayWorks(works);
+                displayThumbnails(works);
+
+                // Réinitialiser le formulaire
+                addPhotoForm.reset();
+                const modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            })
+            .catch(error => {
+                console.error("Erreur lors de l'ajout du projet :", error);
+            });
+        } else {
+            alert("Veuillez remplir tous les champs et sélectionner une image.");
+        }
+    });
+});

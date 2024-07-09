@@ -82,10 +82,11 @@
 			</div>
 			<div class="form-champ">
 				<label for="name">Titre</label>
-				<input id="name" type="text" name="name" required>
+				<input id="name" class="titreName" type="text" name="name" required>
 				<label for="select">Catégorie</label>
-				<input id="select" type="select" name="select" required>
-				<!-- <input type="submit" value="Valider" class="bouton-ajout-photo-gris"> -->
+				<select id="category-select" name="category" required>
+					<option value=""></option>
+				</select>
 			</div>
 	  		<p class="bord1"></p>
 	  		<button class="addImageButton" id="addImageButton">Ajouter une photo</button>
