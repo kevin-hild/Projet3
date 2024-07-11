@@ -520,3 +520,25 @@ a:visited {
 .form-champ {
 	display: none;
 }
+
+.thumbnail-container {
+    position: relative;
+    display: inline-block;
+}
+
+.trash-icon {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 17px;
+    height: 17px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 2px;
+	
+}
