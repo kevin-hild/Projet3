@@ -542,3 +542,8 @@ a:visited {
     border-radius: 2px;
 	
 }
+
+.green-button {
+    background-color: #1D6154;
+    color: white; /* Pour assurer que le texte est lisible */
+}

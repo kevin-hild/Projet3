@@ -228,7 +228,7 @@ function setupAddPhoto() {
 
         // Mettre à jour le bouton pour valider l'ajout de photo
         boutonAjoutPhoto.innerHTML = "Valider";
-        boutonAjoutPhoto.classList.add("bouton-ajout-photo-gris", "submitForm");
+        boutonAjoutPhoto.classList.add("bouton-ajout-photo-gris");
         boutonAjoutPhoto.classList.remove("addImageButton");
 
         // Mettre à jour le titre de la modale
@@ -371,3 +371,16 @@ function initModal() {
     displayThumbnails(works);
     console.log(works)
 }
+
+// function updateButtonColor() {
+//     const title = document.getElementById("title");
+//     const category = document.getElementById("category-select");
+//     const photoInput = document.getElementById("image-uploadee");
+//     const boutonColorChange = document.querySelector(".bouton-ajout-photo-gris");
+
+//     if (title.value && category.value && photoInput.files.length > 0) {
+//         boutonColorChange.style.backgroundColor = "#1D6154";
+//     } else {
+//         boutonColorChange.style.backgroundColor = "";
+//     }
+// }
