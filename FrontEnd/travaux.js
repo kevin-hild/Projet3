@@ -209,7 +209,7 @@ function closeModal() {
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
-            // resetModalContent(); // Réinitialisation du contenu de la modal
+            initModal();
         }
     }
 };
@@ -217,10 +217,8 @@ function closeModal() {
 function setupAddPhoto() {
     const boutonAjoutPhoto = document.querySelector(".addImageButton");
     const formChamp = document.querySelector(".form-champ");
-    let click = 0;
     boutonAjoutPhoto.addEventListener("click", function modale2(event) {
         event.preventDefault();
-        click++
 
         // Supprimer le contenu de la section suppression
         const sectionSuppression = document.querySelector(".cadre-suppression");
@@ -337,7 +335,6 @@ function setupBackToMainModal() {
 
     btnBack.addEventListener("click", function(event) {
         event.preventDefault();
-        
         initModal();
     });
 };

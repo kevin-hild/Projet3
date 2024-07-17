@@ -23,29 +23,36 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
 body {
 	max-width: 1140px;
@@ -54,16 +61,18 @@ body {
 	font-size: 14px;
 	padding-top: 59px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
 }
 
-h1{
+h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -86,12 +95,14 @@ h2 ,.login{
 	color: #1D6154;
 	
 }
+
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -100,13 +111,16 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
 	flex: 1
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -140,11 +154,11 @@ li:hover {
 }
 #contact  {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
+
 #contact > * {
 	text-align: center;
-
 }
 #contact h2{
 	margin-bottom: 20px;
@@ -191,7 +205,6 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 60px;
-
 }
 
 .bouton_filtre {
@@ -239,7 +252,6 @@ a:visited {
 	border: none;
 	cursor: pointer;
 	font-size: 14px;
-	
 }
 
 .fa-regular {
@@ -260,7 +272,6 @@ a:visited {
 	color: white;
 	box-sizing: border-box;
 }
-
 
 /* Modal (boîte de dialogue) */
 .modal {
@@ -372,12 +383,7 @@ a:visited {
 	border-top: solid 1px #B3B3B3;
 	margin: 50px auto 30px auto;
 	width: 420px;
-	
-} 
-
-/* .bouton-ajout-photo-gris {
-	display: none;
-} */
+}
 
 .bouton-ajout-photo-gris {
 	display: flex;
@@ -476,7 +482,6 @@ a:visited {
 	font-weight: 500;
 	line-height: normal;
 	margin: 20px 0 10px 105px;
-	
 }
 
 #addPhotoForm input {
@@ -540,10 +545,9 @@ a:visited {
     font-size: 11px;
     cursor: pointer;
     border-radius: 2px;
-	
 }
 
-.green-button {
+/* .green-button {
     background-color: #1D6154;
-    color: white; /* Pour assurer que le texte est lisible */
-}
+    color: white;
+} */
