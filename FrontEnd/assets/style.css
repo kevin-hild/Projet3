@@ -300,7 +300,7 @@ a:visited {
 }
 
 /* Bouton de fermeture */
-.close {
+.close,.close2 {
     color: black;
     float: right;
     font-size: 20px;
@@ -310,8 +310,8 @@ a:visited {
 	right: 30px;
 }
 
-.close:hover,
-.close:focus {
+.close:hover,.close:focus,
+.close2:hover,.close2:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -385,7 +385,7 @@ a:visited {
 	width: 420px;
 }
 
-.bouton-ajout-photo-gris {
+.btnValider {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -546,8 +546,3 @@ a:visited {
     cursor: pointer;
     border-radius: 2px;
 }
-
-/* .green-button {
-    background-color: #1D6154;
-    color: white;
-} */

@@ -28,10 +28,11 @@ async function checkLogin(event) {
             localStorage.setItem('token', data.token);
             // Rediriger vers la page d'accueil en cas de succès
             window.location.href = 'index.html';
-        }  
+        } else { 
             // Afficher un message d'erreur en cas d'échec de la connexion
             const errorMessage = document.getElementById("error-message");
             errorMessage.innerText = 'Mauvais Email ou mot de passe';
-            errorMessage.style.opacity = 1;    
+            errorMessage.style.opacity = 1; 
+        }  
 };
 
