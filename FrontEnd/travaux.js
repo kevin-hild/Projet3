@@ -1,16 +1,18 @@
+// Initialisation des variables globales
 let categories = []
 let works = []
 let token = localStorage.getItem('token')
 
-async function fetchArrays(){
+// Fonction asynchrone pour récupérer les catégories et les Photos depuis l'API
+async function fetchArrays() {
     const response = await fetch("http://localhost:5678/api/categories");
     categories = await response.json();
     
     const response2 = await fetch("http://localhost:5678/api/works");
     works = await response2.json();
-    
 }
 
+// Fonction principale pour initialiser les différentes fonctionnalités de la page
 async function init() {
     await fetchArrays();
     getCategories();
@@ -21,10 +23,12 @@ async function init() {
     setupAddPhoto();
     closeModal("close");
     closeModal("close2");
+    setupFormListeners();
 }
 
 init()
 
+// Fonction pour afficher les Photos dans la galerie
 function displayWorks(filteredWorks) {
     const sectionImage = document.querySelector(".galery");
     sectionImage.innerHTML = ''; // Vider la galerie
@@ -45,6 +49,7 @@ function displayWorks(filteredWorks) {
     });
 }
 
+// Fonction pour créer et afficher les boutons de filtrage par catégorie
 function getCategories() {
     console.log(categories);
 
@@ -93,12 +98,13 @@ function getCategories() {
     }
 }
 
+// Fonction pour afficher les miniatures des Photos dans la galerie modale
 function displayThumbnails(works) {
     const modalGalery = document.querySelector(".modal-galery");
     modalGalery.innerHTML = ''; // Vider la galerie modale
 
-        const btnValider = document.querySelector(".btnValider")
-        btnValider.style.display = "none"
+    const btnValider = document.querySelector(".btnValider")
+    btnValider.style.display = "none"
 
     works.forEach(work => {
         const container = document.createElement("div");
@@ -128,6 +134,7 @@ function displayThumbnails(works) {
     });
 }
 
+// Fonction asynchrone pour supprimer une Photos de l'API et mettre à jour les affichages
 async function deleteWork(workId) {
     const token = localStorage.getItem('token');
     const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
@@ -146,6 +153,7 @@ async function deleteWork(workId) {
     }
 }
 
+// Fonction pour configurer le mode édition
 function setupEditionMode() {
     const editionModeElement = document.getElementById('edition_mode');
     const loginElement = document.getElementById("login");
@@ -155,7 +163,7 @@ function setupEditionMode() {
     const mainModal = document.getElementById("myModal");
 
     const closeModal2 = document.querySelector(".close2");
-        closeModal2.style.display = ("none");
+    closeModal2.style.display = ("none");
 
     if (token) {
         console.log("Token présent dans le stockage local");
@@ -200,6 +208,7 @@ function setupEditionMode() {
     });
 };
 
+// Fonction pour configurer la fermeture de la modale en fonction de la classe CSS
 function closeModal(elementClassName) {
     const modal = document.getElementById("myModal");
     const btn = document.querySelector(".btn-modif");
@@ -222,9 +231,10 @@ function closeModal(elementClassName) {
     }
 };
 
+// Fonction pour envoyer une nouvelle photo à l'API
 async function envoiPhoto(event) {
     event.preventDefault();
-    
+
     const title = document.getElementById("title").value;
     const category = document.getElementById("category-select").value;
     const photoInput = document.getElementById("image-uploadee");
@@ -256,7 +266,15 @@ async function envoiPhoto(event) {
             works.push(newWork);
             displayWorks(works);
             displayThumbnails(works);
-            initModal();
+
+            // Afficher le message de validation
+            const validationMessage = document.getElementById("validationMessage");
+            if (validationMessage) {
+                validationMessage.style.display = "block";
+                setTimeout(() => {
+                    validationMessage.style.display = "none";
+                }, 10000);
+            }
         } else {
             console.error("Erreur lors de l'ajout du projet :", response.statusText);
         }
@@ -265,6 +283,7 @@ async function envoiPhoto(event) {
     }
 }
 
+// Fonction pour configurer l'ajout d'une nouvelle photo
 function setupAddPhoto() {
     const boutonAjoutPhoto = document.querySelector(".addImageButton");
     const formChamp = document.querySelector(".form-champ");
@@ -353,13 +372,19 @@ function setupAddPhoto() {
                         reader.readAsDataURL(file);
                     }
                 });
-                btnValider.removeEventListener("click", envoiPhoto);
-                btnValider.addEventListener("click", envoiPhoto);
+
+                // Ajout de l'événement envoi d'une Photo
+                if (btnValider) {
+                    btnValider.addEventListener("click", envoiPhoto);
+                } else {
+                    console.error("btnValider is not found");
+                }
             }
         });
     }
 }
 
+// Fonction pour configurer le retour à la modale principale
 function setupBackToMainModal() {
     const btnBack = document.querySelector(".back-to-main-modal");
 
@@ -369,6 +394,7 @@ function setupBackToMainModal() {
     });
 };
 
+// Fonction pour réinitialiser le contenu et l'affichage de la modale
 function initModal() {
     // Réinitialiser le formulaire
     const formChamp = document.querySelector(".form-champ");
@@ -421,6 +447,7 @@ function initModal() {
     console.log(works);
 }
 
+// Fonction pour mettre à jour la couleur du bouton de validation en fonction des champs du formulaire
 function updateButtonColor() {
     const title = document.getElementById("title").value;
     const category = document.getElementById("category-select").value;
@@ -434,6 +461,7 @@ function updateButtonColor() {
     }
 }
 
+// Fonction pour configurer les écouteurs d'événements des champs du formulaire
 function setupFormListeners() {
     const titleField = document.getElementById("title");
     const categoryField = document.getElementById("category-select");
@@ -444,5 +472,9 @@ function setupFormListeners() {
     if (photoField) photoField.addEventListener("change", updateButtonColor);
 }
 
-setupFormListeners();
-setupAddPhoto();
+// Afficher un message de validation pendant 10 secondes
+const validationMessage = document.getElementById("validationMessage");
+validationMessage.style.display = "block";
+setTimeout(() => {
+    validationMessage.style.display = "none";
+}, 10000);
