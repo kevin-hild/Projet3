@@ -145,7 +145,8 @@ async function deleteWork(workId) {
     });
 
     if (response.ok) {
-        works = works.filter(work => work.id !== workId);
+        works = works.filter(work => work.id !== parseInt(workId));
+
         displayWorks(works);
         displayThumbnails(works);
     } else {
@@ -262,11 +263,13 @@ async function envoiPhoto(event) {
         });
 
         if (response.ok) {
+
             const newWork = await response.json();
             works.push(newWork);
             displayWorks(works);
-            displayThumbnails(works);
 
+            const span = document.getElementsByClassName("close2")[0];
+            span.click()
             // Afficher le message de validation
             const validationMessage = document.getElementById("validationMessage");
             if (validationMessage) {
@@ -471,10 +474,3 @@ function setupFormListeners() {
     if (categoryField) categoryField.addEventListener("change", updateButtonColor);
     if (photoField) photoField.addEventListener("change", updateButtonColor);
 }
-
-// Afficher un message de validation pendant 10 secondes
-const validationMessage = document.getElementById("validationMessage");
-validationMessage.style.display = "block";
-setTimeout(() => {
-    validationMessage.style.display = "none";
-}, 10000);
