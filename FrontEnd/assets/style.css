@@ -296,7 +296,6 @@ a:visited {
     width: 630px;
 	height: 688px;
 	border-radius: 10px;
-	/* position: sticky; */
 }
 
 /* Bouton de fermeture */
@@ -360,7 +359,6 @@ a:visited {
 .modal-content {
     position: relative;
     width: 630px;
-	/* height: 670px;                                  */
     margin: 15% auto;
     border: 1px solid #888;
     border-radius: 10px;
