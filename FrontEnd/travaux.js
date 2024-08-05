@@ -286,7 +286,7 @@ async function envoiPhoto(event) {
     }
 }
 
-// Fonction pour configurer l'ajout d'une nouvelle photo
+// Fonction pour configurer l'ajout d'une nouvelle photo vue de la 2eme modal
 function setupAddPhoto() {
     const boutonAjoutPhoto = document.querySelector(".addImageButton");
     const formChamp = document.querySelector(".form-champ");
