@@ -54,7 +54,7 @@ function getCategories() {
     console.log(categories);
 
     const sectionElement = document.querySelector(".categories");
-
+    
     const allButton = document.createElement("button");
     allButton.classList.add("bouton_filtre", "filtre_actif");
     allButton.innerText = "Tous";
@@ -168,6 +168,9 @@ function setupEditionMode() {
 
     if (token) {
         console.log("Token présent dans le stockage local");
+
+        const hideCategorie = document.querySelector(".categories")
+        hideCategorie.style.display = ("none");
 
         loginElement.innerHTML = '<a href="index.html" id="logout-link">logout</a>';
         const logoutLink = document.getElementById("logout-link");
